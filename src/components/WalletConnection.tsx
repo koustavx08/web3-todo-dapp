@@ -9,7 +9,7 @@ export const WalletConnection: React.FC = () => {
     isCorrectNetwork, 
     connectWallet, 
     disconnectWallet, 
-    switchToSepolia 
+    switchToFuji 
   } = useWallet();
 
   const formatAddress = (address: string) => {
@@ -32,11 +32,11 @@ export const WalletConnection: React.FC = () => {
     <div className="flex items-center gap-3">
       {!isCorrectNetwork && (
         <button
-          onClick={switchToSepolia}
+          onClick={switchToFuji}
           className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-600 transition-colors"
         >
           <AlertCircle size={16} />
-          Switch Network
+          Switch to Fuji
         </button>
       )}
       

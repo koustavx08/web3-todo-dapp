@@ -58,7 +58,7 @@ export const useWallet = () => {
       });
 
       if (chainIdNumber !== FUJI_CHAIN_ID) {
-        await switchToSepolia();
+        await switchToFuji();
       } else {
         toast.success('Wallet connected successfully!');
       }
@@ -68,7 +68,7 @@ export const useWallet = () => {
     }
   };
 
-  const switchToSepolia = async () => {
+  const switchToFuji = async () => {
     if (!window.ethereum) return;
 
     try {
@@ -76,7 +76,7 @@ export const useWallet = () => {
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: FUJI_CONFIG.chainId }],
       });
-      toast.success('Switched to Ethereum Sepolia network');
+      toast.success('Switched to Avalanche Fuji Testnet');
     } catch (switchError: any) {
       if (switchError.code === 4902) {
         try {
@@ -84,10 +84,10 @@ export const useWallet = () => {
             method: 'wallet_addEthereumChain',
             params: [FUJI_CONFIG],
           });
-          toast.success('Added and switched to Ethereum Sepolia network');
+          toast.success('Added and switched to Avalanche Fuji Testnet');
         } catch (addError) {
           console.error('Error adding network:', addError);
-          toast.error('Failed to add Ethereum Sepolia network');
+          toast.error('Failed to add Avalanche Fuji Testnet');
         }
       } else {
         console.error('Error switching network:', switchError);
@@ -146,7 +146,7 @@ export const useWallet = () => {
     ...walletState,
     connectWallet,
     disconnectWallet,
-    switchToSepolia,
+    switchToFuji,
     getProvider,
     getSigner,
   };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Plus, CheckSquare } from 'lucide-react';
 import { WalletConnection } from './components/WalletConnection';
@@ -25,7 +25,8 @@ function App() {
   } = useTasks();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
-  const isContractDeployed = CONTRACT_ADDRESS !== "0x0000000000000000000000000000000000000000";
+  // Fix contract deployed check for production
+  const isContractDeployed = CONTRACT_ADDRESS !== undefined && CONTRACT_ADDRESS !== null && typeof CONTRACT_ADDRESS === 'string' && CONTRACT_ADDRESS.toLowerCase() !== "0x0000000000000000000000000000000000000000";
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
@@ -65,7 +66,7 @@ function App() {
               <h2 className="text-3xl font-bold text-white mb-4">Welcome to Web3 Todo</h2>
               <p className="text-gray-300 mb-8">
                 A decentralized task management app with NFT rewards, task delegation, 
-                and streak tracking powered by Polygon Mumbai.
+                and streak tracking powered by Avalanche Fuji Testnet.
               </p>
               <div className="space-y-2 text-sm text-gray-400">
                 <p>🏆 Complete tasks and mint them as NFTs</p>

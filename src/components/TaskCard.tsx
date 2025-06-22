@@ -153,7 +153,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
 
         {task.isNFT && (
           <a
-            href={`https://mumbai.polygonscan.com/token/${task.nftTokenId}`}
+            href={`https://snowtrace.io/token/${task.nftContractAddress ?? '0xFa296AEC34aE2838b2587963cC43deB60E25c80c'}?a=${task.nftTokenId}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-gray-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"

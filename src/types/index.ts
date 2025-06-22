@@ -10,6 +10,7 @@ export interface Task {
   delegatedTo: string;
   isNFT: boolean;
   nftTokenId: number;
+  nftContractAddress?: string; // Add contract address for NFT explorer links
 }
 
 export interface UserStats {
