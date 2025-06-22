@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
 import toast from 'react-hot-toast';
 import { useContract } from './useContract';
 import { useWallet } from './useWallet';
@@ -105,24 +104,38 @@ export const useTasks = () => {
   };
 
   const completeTask = async (taskId: number) => {
-    if (!contract) {
-      toast.error('Contract not available');
-      return;
-    }
-
+    let contractInstance = contract;
     try {
       setLoading(true);
-      const tx = await contract.completeTask(taskId);
+      // Ensure MetaMask is available and connected
+      if (!window.ethereum) {
+        toast.error('MetaMask not found');
+        setLoading(false);
+        return;
+      }
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+      // Fallback: if contract is not available, instantiate it
+      if (!contractInstance) {
+        const { ethers } = await import('ethers');
+        const { CONTRACT_ADDRESS, CONTRACT_ABI } = await import('../config/constants');
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        contractInstance = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+      }
+
+      const tx = await contractInstance.completeTask(taskId);
       toast.loading('Completing task...', { id: 'complete-task' });
-      
       await tx.wait();
       toast.success('Task completed successfully!', { id: 'complete-task' });
-      
       await fetchTasks();
       await fetchUserStats();
-    } catch (error) {
+    } catch (error: any) {
+      let message = 'Failed to complete task';
+      if (error?.data?.message) message = error.data.message;
+      else if (error?.message) message = error.message;
+      toast.error(message, { id: 'complete-task' });
       console.error('Error completing task:', error);
-      toast.error('Failed to complete task', { id: 'complete-task' });
     } finally {
       setLoading(false);
     }
