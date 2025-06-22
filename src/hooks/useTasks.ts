@@ -119,8 +119,9 @@ export const useTasks = () => {
       if (!contractInstance) {
         const { ethers } = await import('ethers');
         const { CONTRACT_ADDRESS, CONTRACT_ABI } = await import('../config/constants');
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        const signer = await provider.getSigner();
+        // Use ethers.providers.Web3Provider for MetaMask compatibility
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
         contractInstance = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
       }
 
