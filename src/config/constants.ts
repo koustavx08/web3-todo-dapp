@@ -1,18 +1,18 @@
-export const SEPOLIA_CHAIN_ID = 11155111;
-export const SEPOLIA_RPC = "https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID";
+export const FUJI_CHAIN_ID = 43113;
+export const FUJI_RPC = "https://api.avax-test.network/ext/bc/C/rpc";
 
-export const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"; // Deploy contract and update this
+export const CONTRACT_ADDRESS = "0xFa296AEC34aE2838b2587963cC43deB60E25c80c"; // Deploy contract and update this
 
-export const SEPOLIA_CONFIG = {
-  chainId: '0xAA36A7',
-  chainName: 'Ethereum Sepolia Testnet',
+export const FUJI_CONFIG = {
+  chainId: '0xA869',
+  chainName: 'Avalanche Fuji Testnet',
   nativeCurrency: {
-    name: 'SepoliaETH',
-    symbol: 'ETH',
+    name: 'Avalanche Fuji',
+    symbol: 'AVAX',
     decimals: 18,
   },
-  rpcUrls: [SEPOLIA_RPC],
-  blockExplorerUrls: ['https://sepolia.etherscan.io/'],
+  rpcUrls: [FUJI_RPC],
+  blockExplorerUrls: ['https://cchain.explorer.avax.network/'],
 };
 
 export const WEB3_STORAGE_TOKEN = ""; // Add your web3.storage token here

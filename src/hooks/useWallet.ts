@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import toast from 'react-hot-toast';
 import { WalletState } from '../types';
-import { SEPOLIA_CHAIN_ID, SEPOLIA_CONFIG } from '../config/constants';
+import { FUJI_CHAIN_ID, FUJI_CONFIG } from '../config/constants';
 
 declare global {
   interface Window {
@@ -31,7 +31,7 @@ export const useWallet = () => {
           account: accounts[0],
           isConnected: true,
           chainId: chainIdNumber,
-          isCorrectNetwork: chainIdNumber === SEPOLIA_CHAIN_ID,
+          isCorrectNetwork: chainIdNumber === FUJI_CHAIN_ID,
         });
       }
     } catch (error) {
@@ -54,10 +54,10 @@ export const useWallet = () => {
         account: accounts[0],
         isConnected: true,
         chainId: chainIdNumber,
-        isCorrectNetwork: chainIdNumber === SEPOLIA_CHAIN_ID,
+        isCorrectNetwork: chainIdNumber === FUJI_CHAIN_ID,
       });
 
-      if (chainIdNumber !== SEPOLIA_CHAIN_ID) {
+      if (chainIdNumber !== FUJI_CHAIN_ID) {
         await switchToSepolia();
       } else {
         toast.success('Wallet connected successfully!');
@@ -74,7 +74,7 @@ export const useWallet = () => {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: SEPOLIA_CONFIG.chainId }],
+        params: [{ chainId: FUJI_CONFIG.chainId }],
       });
       toast.success('Switched to Ethereum Sepolia network');
     } catch (switchError: any) {
@@ -82,7 +82,7 @@ export const useWallet = () => {
         try {
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
-            params: [SEPOLIA_CONFIG],
+            params: [FUJI_CONFIG],
           });
           toast.success('Added and switched to Ethereum Sepolia network');
         } catch (addError) {

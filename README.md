@@ -1,11 +1,11 @@
 # Web3 Todo DApp
 
-A comprehensive decentralized task management application built with ReactJS and Solidity, featuring NFT rewards, task delegation, and streak tracking on Ethereum Sepolia testnet.
+A comprehensive decentralized task management application built with ReactJS and Solidity, featuring NFT rewards, task delegation, and streak tracking on Avalanche Fuji (AVAX testnet).
 
 ## Features
 
 ### Core Functionality
-- **Blockchain-based Task Management**: Create, complete, and delete tasks stored on Ethereum Sepolia
+- **Blockchain-based Task Management**: Create, complete, and delete tasks stored on Avalanche Fuji
 - **MetaMask Integration**: Seamless wallet connection with automatic network switching
 - **Task Ownership**: Each task is owned by the creator's wallet address
 - **Real-time Updates**: Blockchain event tracking for instant UI updates
@@ -28,7 +28,7 @@ A comprehensive decentralized task management application built with ReactJS and
 
 ### Blockchain
 - **Solidity** smart contracts
-- **Ethereum Sepolia** testnet
+- **Avalanche Fuji** testnet
 - **OpenZeppelin** contracts for NFT functionality
 - **IPFS** via web3.storage for decentralized storage
 
@@ -37,7 +37,7 @@ A comprehensive decentralized task management application built with ReactJS and
 ### Prerequisites
 - Node.js 18+
 - MetaMask browser extension
-- Ethereum Sepolia testnet ETH tokens
+- Avalanche Fuji testnet AVAX tokens
 
 ### Installation
 
@@ -58,7 +58,7 @@ npm run dev
    - Create a new file and paste the contract from `contracts/TodoList.sol`
    - Install OpenZeppelin contracts: `@openzeppelin/contracts`
    - Compile with Solidity 0.8.19+
-   - Deploy to Ethereum Sepolia testnet using MetaMask
+   - Deploy to Avalanche Fuji testnet using MetaMask
 
 2. **Option 2: Using Hardhat**
    ```bash
@@ -66,8 +66,8 @@ npm run dev
    npm install --save-dev hardhat
    npx hardhat init
    # Copy contract to contracts/ folder
-   # Configure hardhat.config.js for Ethereum Sepolia
-   npx hardhat run scripts/deploy.js --network sepolia
+   # Configure hardhat.config.js for Avalanche Fuji
+   npx hardhat run scripts/deploy.js --network fuji
    ```
 
 3. **Update Contract Address**
@@ -83,9 +83,9 @@ npm run dev
    - Required for IPFS functionality and NFT metadata storage
 
 2. **RPC Configuration**
-   - Default uses Infura's public RPC
-   - For production, get your own RPC URL from [Infura](https://infura.io)
-   - Update `SEPOLIA_RPC` in `src/config/constants.ts`
+   - Default uses Avalanche Fuji public RPC
+   - For production, get your own RPC URL from [Avalanche](https://www.avax.network/)
+   - Update `FUJI_RPC` in `src/config/constants.ts`
 
 ## Smart Contract Features
 
@@ -105,7 +105,7 @@ npm run dev
 ## Usage
 
 1. **Connect Wallet**: Click "Connect Wallet" and approve MetaMask connection
-2. **Switch Network**: Automatically switch to Ethereum Sepolia if needed
+2. **Switch Network**: Automatically switch to Avalanche Fuji if needed
 3. **Create Tasks**: Click "Create Task" and fill in details
 4. **Manage Tasks**: Complete, delegate, or delete tasks as needed
 5. **Mint NFTs**: Convert completed tasks to collectible NFTs
@@ -119,7 +119,7 @@ npm run dev
 3. Set environment variables if using custom RPC/IPFS settings
 
 ### Smart Contract Verification
-1. Verify contract on [Sepolia Etherscan](https://sepolia.etherscan.io)
+1. Verify contract on [Fuji C-Chain Explorer](https://cchain.explorer.avax.network/)
 2. Use the contract source code and constructor parameters
 3. Enable public interaction through block explorer
 
@@ -145,8 +145,8 @@ contracts/
 - `useIPFS`: IPFS upload/download functionality
 
 ### Testing
-- Test on Ethereum Sepolia testnet before mainnet deployment
-- Get testnet ETH from [Sepolia Faucet](https://sepoliafaucet.com/)
+- Test on Avalanche Fuji testnet before mainnet deployment
+- Get testnet AVAX from [Fuji Faucet](https://faucet.avax.network/)
 - Verify all contract interactions work correctly
 
 ## Contributing
@@ -154,7 +154,7 @@ contracts/
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly on Sepolia testnet
+4. Test thoroughly on Fuji testnet
 5. Submit a pull request
 
 ## License
@@ -165,6 +165,6 @@ MIT License - see LICENSE file for details
 
 For issues and questions:
 - Check the contract deployment steps
-- Ensure you're on Ethereum Sepolia testnet
-- Verify you have testnet ETH tokens
+- Ensure you're on Avalanche Fuji testnet
+- Verify you have testnet AVAX tokens
 - Check browser console for detailed error messages
